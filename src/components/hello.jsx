@@ -1,3 +1,5 @@
+import Fruit from "./Fruit";
+
 export function Hello({ fruits }) {
   const selectedFruits = [];
 
@@ -12,9 +14,12 @@ export function Hello({ fruits }) {
     <>
       <ul>
         {fruits.map((fruit, index) => (
-          <li onClick={() => selectFruit(fruit)} key={index}>
-            {fruit}
-          </li>
+          <Fruit
+            key={index}
+            name={fruit.name}
+            price={fruit.price}
+            onClick={() => selectFruit(fruit)}
+          ></Fruit>
         ))}
       </ul>
     </>
