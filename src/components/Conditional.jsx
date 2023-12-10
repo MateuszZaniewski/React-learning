@@ -1,15 +1,10 @@
 export default function Conditional() {
   let message;
-  const condition = false;
+  const condition = true;
 
-  if (condition) {
-    message = <h1>This is true condition</h1>;
-  } else {
-    message = <h1>This is false condition</h1>;
-  }
-  return (
-    <div>
-      <span>{message}</span>
-    </div>
+  return condition ? (
+    <h1>This is true condition</h1>
+  ) : (
+    <h1>This is false condition</h1>
   );
 }
