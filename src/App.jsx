@@ -3,6 +3,7 @@ import { Hello } from "./components/hello";
 import Conditional from "./components/Conditional";
 import Message from "./components/Message";
 import Counter from "./components/Counter";
+import Form from "./components/Form";
 
 function App() {
   const fruits = [
@@ -13,6 +14,7 @@ function App() {
   ];
   return (
     <>
+      <Form></Form>
       <Hello fruits={fruits}></Hello>
       <Conditional />
       <Message />
