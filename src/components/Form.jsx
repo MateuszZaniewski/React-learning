@@ -1,33 +1,32 @@
 import { useState } from "react";
 
-export default function Form() {
-  const [name, setName] = useState({
-    firstName: "",
-    lastName: "",
-  });
+export default function Form(props) {
+  const [item, setItem] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name);
+    props.onSubmit(item);
+    setItem("");
+  };
+
+  const handleChange = (e) => {
+    setItem(e.target.value);
   };
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit} className="flex gap-3 justify-center">
         <input
-          onChange={(event) =>
-            setName({ ...name, firstName: event.target.value })
-          }
+          className="border border-gray-400 rounded-lg"
           type="text"
-          value={name.firstName}
+          value={item}
+          onChange={handleChange}
         ></input>
-        <input
-          type="text"
-          value={name.lastName}
-          onChange={(event) =>
-            setName({ ...name, lastName: event.target.value })
-          }
-        ></input>
-        <button onClick={(e) => handleSubmit(e)}>Submit</button>
+        <button
+          className="border border-green-200 px-2 py-1 rounded-xl bg-green-200"
+          type="submit"
+        >
+          Add
+        </button>
       </form>
     </div>
   );
