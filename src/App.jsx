@@ -10,17 +10,4 @@ function App() {
   );
 }
 
-/*
-  ToDoApp
-
-  -ToDoContainer
-    -ToDoItemCounter
-    -ToDoResetList
-    -ToDoAdd
-  -ToDoList
-    -ToDoItem
-    -ToDoRemoveItem
-
-*/
-
 export default App;

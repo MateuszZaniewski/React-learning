@@ -2,9 +2,11 @@ import { useState } from "react";
 
 export default function Form(props) {
   const [item, setItem] = useState("");
+  const [category, setCategory] = useState("homeTasks");
   const handleSubmit = (e) => {
+    console.log(e);
     e.preventDefault();
-    props.onSubmit(item);
+    props.onSubmit({ item, category });
     setItem("");
   };
 
@@ -12,9 +14,17 @@ export default function Form(props) {
     setItem(e.target.value);
   };
 
+  const handleCategoryChange = (e) => {
+    console.log(e.target.value);
+    setCategory(e.target.value);
+  };
+
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="flex gap-3 justify-center">
+    <div className="pt-2">
+      <form
+        onSubmit={handleSubmit}
+        className="flex gap-3 justify-center items-center"
+      >
         <input
           className="border border-gray-400 rounded-lg"
           type="text"
@@ -27,6 +37,19 @@ export default function Form(props) {
         >
           Add
         </button>
+
+        <label for="tasks">Category: </label>
+
+        <select id="tasks" value={category} onChange={handleCategoryChange}>
+          <option value="homeTasks" selected>
+            Home
+          </option>
+          <option value="workTasks">Work</option>
+          <option value="personalTasks">Personal</option>
+          <option value="financeTasks">Finance</option>
+          <option value="healthTasks">Health</option>
+          <option value="shoppingTasks">Shopping</option>
+        </select>
       </form>
     </div>
   );

@@ -1,47 +1,60 @@
 import { useState } from "react";
 import Form from "./Form";
 import Button from "./Button";
-// ✔
+import Statistics from "./Statistics";
 
 export default function ToDoContainer() {
   const [list, setList] = useState([]);
   const [completed, setCompleted] = useState([]);
+  const [category, setCategory] = useState([
+    {
+      homeTasks: [],
+    },
+    {
+      workTasks: [],
+    },
+    {
+      personalTasks: [],
+    },
+    {
+      financeTasks: [],
+    },
+    {
+      healthTasks: [],
+    },
+    {
+      shoppingTasks: [],
+    },
+  ]);
+
   const getData = (data) => {
-    setList([...list, data]);
+    setList([...list, data.item]);
   };
   const deleteItem = (item) => {
     const updatedList = [...completed];
     const index = completed.indexOf(item);
-    console.log("index of item", index, item);
     updatedList.splice(index, 1);
     setCompleted(updatedList);
-    console.log("Item deleted: ", index);
   };
   const completeTask = (item) => {
     setCompleted([...completed, item]);
-    console.log(completed);
   };
 
   const completeAll = () => {
     setCompleted(list);
-    console.log("All tasks completed", completed);
   };
 
   const clearAll = () => {
     setList([]);
-    console.log("List cleared", list);
+    setCompleted([]);
   };
   return (
     <div className="">
-      <div className="flex justify-center gap-2">
+      <div className="flex justify-center items-center gap-2">
         <span>Options: </span>
         <div className="flex gap-4">
-          <Button
-            onClick={completeAll}
-            name={"Complete all task"}
-            color={"blue-400"}
-          />
-          <Button onClick={clearAll} name={"Clear list"} color={"red-400"} />
+          <Button name={"Complete all"} color={"blue-400"} task={completeAll} />
+          <Button name={"Clear list"} color={"red-400"} task={clearAll} />
         </div>
       </div>
       <ul className="pb-4">
@@ -67,6 +80,10 @@ export default function ToDoContainer() {
         })}
       </ul>
       <Form onSubmit={getData} />
+      <Statistics
+        numberOfTasks={list.length}
+        numberOfCompleted={completed.length}
+      />
     </div>
   );
 }
