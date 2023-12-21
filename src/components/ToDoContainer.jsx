@@ -6,29 +6,10 @@ import Statistics from "./Statistics";
 export default function ToDoContainer() {
   const [list, setList] = useState([]);
   const [completed, setCompleted] = useState([]);
-  const [category, setCategory] = useState([
-    {
-      homeTasks: [],
-    },
-    {
-      workTasks: [],
-    },
-    {
-      personalTasks: [],
-    },
-    {
-      financeTasks: [],
-    },
-    {
-      healthTasks: [],
-    },
-    {
-      shoppingTasks: [],
-    },
-  ]);
+  console.log(...list);
 
   const getData = (data) => {
-    setList([...list, data.item]);
+    setList([...list, [data[0], data[1]]]);
   };
   const deleteItem = (item) => {
     const updatedList = [...completed];
@@ -61,6 +42,7 @@ export default function ToDoContainer() {
         {list.map((item, index) => {
           return (
             <div key={index} className="flex justify-center items-center">
+              <div className="h-5 w-5 border border-blue-400"></div>
               <span
                 className={`${
                   completed.includes(item)
@@ -73,7 +55,7 @@ export default function ToDoContainer() {
                     : completeTask(item)
                 }
               >
-                {item + (completed.includes(item) ? "✔" : "")}
+                {item[0] + (completed.includes(item) ? "✔" : "")}
               </span>
             </div>
           );

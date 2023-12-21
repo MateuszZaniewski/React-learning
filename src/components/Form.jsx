@@ -6,7 +6,7 @@ export default function Form(props) {
   const handleSubmit = (e) => {
     console.log(e);
     e.preventDefault();
-    props.onSubmit({ item, category });
+    props.onSubmit([item, category]);
     setItem("");
   };
 
@@ -38,12 +38,10 @@ export default function Form(props) {
           Add
         </button>
 
-        <label for="tasks">Category: </label>
+        <label htmlFor="tasks">Category: </label>
 
         <select id="tasks" value={category} onChange={handleCategoryChange}>
-          <option value="homeTasks" selected>
-            Home
-          </option>
+          <option value="homeTasks">Home</option>
           <option value="workTasks">Work</option>
           <option value="personalTasks">Personal</option>
           <option value="financeTasks">Finance</option>
