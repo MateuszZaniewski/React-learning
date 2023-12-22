@@ -2,6 +2,8 @@ import { useState } from "react";
 import Form from "./Form";
 import Button from "./Button";
 import Statistics from "./Statistics";
+import Categories from "./Categories";
+import Task from "./Task";
 
 export default function ToDoContainer() {
   const [list, setList] = useState([]);
@@ -30,14 +32,27 @@ export default function ToDoContainer() {
     setCompleted([]);
   };
   return (
-    <div className="">
-      <div className="flex justify-center items-center gap-2">
-        <span>Options: </span>
+    <div className="flex flex-col flex-wrap">
+      <Form onSubmit={getData} />
+      <div className="flex justify-center items-center gap-2 pt-4">
+        <span className="text-xs">Options: </span>
         <div className="flex gap-4">
           <Button name={"Complete all"} color={"blue-400"} task={completeAll} />
           <Button name={"Clear list"} color={"red-400"} task={clearAll} />
         </div>
       </div>
+      <Statistics
+        numberOfTasks={list.length}
+        numberOfCompleted={completed.length}
+      />
+      <div className="w-[80%] mx-auto">
+        <hr />
+      </div>
+
+      <Categories />
+
+      <Task />
+
       <ul className="pb-4">
         {list.map((item, index) => {
           return (
@@ -61,11 +76,6 @@ export default function ToDoContainer() {
           );
         })}
       </ul>
-      <Form onSubmit={getData} />
-      <Statistics
-        numberOfTasks={list.length}
-        numberOfCompleted={completed.length}
-      />
     </div>
   );
 }
