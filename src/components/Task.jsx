@@ -1,18 +1,35 @@
-export default function Task() {
-  // template to reorder to simple component
+import Dropplet from "./Dropplet";
+
+export default function Task({
+  list,
+  completed,
+  completeTask,
+  deleteItem,
+  activeCategory,
+}) {
+  const filteredList = list.filter((item) => {
+    if (activeCategory === "all") {
+      return true;
+    } else {
+      return item.includes(activeCategory);
+    }
+  });
   return (
     <div>
-      {/* <ul className="pb-4">
-        {list.map((item, index) => {
+      <ul className="py-4">
+        {filteredList.map((item, index) => {
           return (
-            <div key={index} className="flex justify-center items-center">
-              <div className="h-5 w-5 border border-blue-400"></div>
+            <div
+              key={index}
+              className={`pt-2 flex justify-start items-center max-w-sm md:max-w-lg gap-5 w-[90%] mx-auto`}
+            >
+              <Dropplet category={item[1]} />
               <span
                 className={`${
                   completed.includes(item)
                     ? "line-through text-gray-400"
                     : "no-underline"
-                } pb-2 border-b border-gray-300 text-2xl cursor-pointer`}
+                } pb-2 text-xl cursor-pointer`}
                 onClick={() =>
                   completed.includes(item)
                     ? deleteItem(item)
@@ -24,7 +41,7 @@ export default function Task() {
             </div>
           );
         })}
-      </ul> */}
+      </ul>
     </div>
   );
 }

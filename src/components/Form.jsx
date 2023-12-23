@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function Form(props) {
   const [item, setItem] = useState("");
-  const [category, setCategory] = useState("homeTasks");
+  const [category, setCategory] = useState("home");
   const handleSubmit = (e) => {
     console.log(e);
     e.preventDefault();
@@ -44,12 +44,12 @@ export default function Form(props) {
           <label htmlFor="tasks">Category: </label>
 
           <select id="tasks" value={category} onChange={handleCategoryChange}>
-            <option value="homeTasks">Home</option>
-            <option value="workTasks">Work</option>
-            <option value="personalTasks">Personal</option>
-            <option value="financeTasks">Finance</option>
-            <option value="healthTasks">Health</option>
-            <option value="shoppingTasks">Shopping</option>
+            <option value="home">Home</option>
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="finance">Finance</option>
+            <option value="health">Health</option>
+            <option value="shopping">Shopping</option>
           </select>
         </div>
       </form>

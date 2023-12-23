@@ -8,11 +8,17 @@ import Task from "./Task";
 export default function ToDoContainer() {
   const [list, setList] = useState([]);
   const [completed, setCompleted] = useState([]);
-  console.log(...list);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const getData = (data) => {
     setList([...list, [data[0], data[1]]]);
   };
+
+  const getButtonData = (data) => {
+    console.log("Active category", data);
+    setSelectedCategory(data);
+  };
+
   const deleteItem = (item) => {
     const updatedList = [...completed];
     const index = completed.indexOf(item);
@@ -49,32 +55,16 @@ export default function ToDoContainer() {
         <hr />
       </div>
 
-      <Categories />
-
-      <Task />
+      <Categories list={list} onButton={getButtonData} />
 
       <ul className="pb-4">
-        {list.map((item, index) => {
-          return (
-            <div key={index} className="flex justify-center items-center">
-              <div className="h-5 w-5 border border-blue-400"></div>
-              <span
-                className={`${
-                  completed.includes(item)
-                    ? "line-through text-gray-400"
-                    : "no-underline"
-                } pb-2 border-b border-gray-300 text-2xl cursor-pointer`}
-                onClick={() =>
-                  completed.includes(item)
-                    ? deleteItem(item)
-                    : completeTask(item)
-                }
-              >
-                {item[0] + (completed.includes(item) ? "✔" : "")}
-              </span>
-            </div>
-          );
-        })}
+        <Task
+          list={list}
+          completed={completed}
+          completeTask={completeTask}
+          deleteItem={deleteItem}
+          activeCategory={selectedCategory}
+        />
       </ul>
     </div>
   );
