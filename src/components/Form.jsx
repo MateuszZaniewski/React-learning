@@ -20,10 +20,10 @@ export default function Form(props) {
   };
 
   return (
-    <div className="pt-2 flex justify-center">
+    <div className="pt-2 flex justify-center lg:justify-start pl-5">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-2 sm:flex-row sm:gap-4 items-center"
+        className="flex flex-col gap-2 sm:flex-row sm:gap-4 items-center lg:flex-col lg:pt-7 lg:items-start"
       >
         <div className="flex gap-2">
           <input

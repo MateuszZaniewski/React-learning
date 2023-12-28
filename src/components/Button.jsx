@@ -1,10 +1,10 @@
 export default function Button({ name, color, task }) {
   return (
-    <button
-      onClick={task}
-      className={`px-1 py-1 border border-gray-200 rounded-xl ${color}`}
-    >
-      {name}
-    </button>
+    <div className="flex items-center gap-4 justify-start">
+      <div className={`h-3 w-3 rounded-sm ${color}`}></div>
+      <button className="" onClick={task}>
+        {name}
+      </button>
+    </div>
   );
 }

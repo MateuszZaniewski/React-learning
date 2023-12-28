@@ -6,7 +6,7 @@ export default function Categories({ onButton }) {
   };
 
   return (
-    <div className="pt-2 flex justify-start overflow-auto max-w-sm md:max-w-lg gap-5 w-[90%] mx-auto no-scrollbar">
+    <div className="pt-2 flex justify-start overflow-auto max-w-sm md:max-w-lg gap-5 w-[90%] mx-auto no-scrollbar lg:flex-col lg:w-full lg:pl-4">
       <Button name={"all"} color={""} task={handleButton} />
       <Button name={"home"} color={"bg-[#79BCFA]"} task={handleButton} />
       <Button name={"health"} color={"bg-[#F15252]"} task={handleButton} />
