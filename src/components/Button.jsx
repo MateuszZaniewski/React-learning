@@ -1,4 +1,4 @@
-export default function Button({ name, color, task }) {
+export default function Button({ name, color, task, number }) {
   return (
     <div className="flex items-center hover:bg-gray-300 rounded-lg">
       <div className="flex items-center gap-2 justify-start px-2 py-1 rounded-lg rounded-bl-lg  w-full">
@@ -7,7 +7,9 @@ export default function Button({ name, color, task }) {
           {name}
         </button>
       </div>
-      <div className="px-2 py-1 rounded-tr-lg rounded-br-lg w-fit">0</div>
+      <div className="px-2 py-1 rounded-tr-lg rounded-br-lg w-fit">
+        {number}
+      </div>
     </div>
   );
 }

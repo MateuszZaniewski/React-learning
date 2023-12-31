@@ -8,12 +8,14 @@ import Lists from "./Lists";
 import up from "../assets/up.png";
 import down from "../assets/down.png";
 import Settings from "./Settings";
+import DetailsView from "./DetailsView";
 
 export default function ToDoContainer() {
   const [list, setList] = useState([]);
   const [completed, setCompleted] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [showCategories, setShowCategories] = useState(true);
+  const [activeListsTab, setActiveListsTab] = useState("Today");
 
   const getData = (data) => {
     setList([...list, data]);
@@ -21,6 +23,10 @@ export default function ToDoContainer() {
 
   const handleCategories = () => {
     setShowCategories(!showCategories);
+  };
+
+  const handleActiveListsTab = (data) => {
+    setActiveListsTab(data);
   };
 
   const getButtonData = (data) => {
@@ -48,16 +54,24 @@ export default function ToDoContainer() {
   };
   return (
     <div className="flex flex-col lg:flex-row">
-      <div className="hidden lg:flex">
-        <div className="w-[400px] h-[80vh] overflow-x-hidden border-gray-200 bg-gray-100 rounded-xl mx-5 my-5">
+      <div className="hidden lg:flex mx-auto">
+        <div className="w-[28vw] max-w-[400px] h-[95vmin] overflow-x-hidden bg-gray-100 rounded-tl-xl rounded-bl-xl my-5 no-scrollbar">
           <div className="flex flex-col bg-gray-200 mx-6 rounded-xl my-6">
             <h2 className="pt-5 pl-5 text-black font-bold text-lg">
               Dashboard
             </h2>
 
             <div className="rounded-xl w-[90%] mx-auto my-5">
+              <h3 className="uppercase text-sm px-2 py-2 font-bold">Tasks</h3>
+              <Form onSubmit={getData} />
+            </div>
+
+            <div className="rounded-xl w-[90%] mx-auto my-5">
               <h3 className="uppercase text-sm px-2 py-2 font-bold">Lists</h3>
-              <Lists />
+              <Lists
+                activeListsTab={activeListsTab}
+                onChangeActiveList={handleActiveListsTab}
+              />
             </div>
             <div className="rounded-xl w-[90%] mx-auto">
               <div
@@ -83,14 +97,16 @@ export default function ToDoContainer() {
             </div>
           </div>
         </div>
-        <Form onSubmit={getData} />
-        <Task
-          list={list}
-          completed={completed}
-          completeTask={completeTask}
-          deleteItem={deleteItem}
-          activeCategory={selectedCategory}
-        />
+        <div className="w-[72vw] max-w-[900px] h-[95vmin] bg-gray-100 rounded-tr-xl rounded-br-xl my-5 overflow-x-hidden">
+          <DetailsView
+            activeTab={activeListsTab}
+            list={list}
+            completed={completed}
+            completeTask={completeTask}
+            deleteItem={deleteItem}
+            activeCategory={selectedCategory}
+          />
+        </div>
       </div>
       <div className="lg:hidden">
         <Form onSubmit={getData} />

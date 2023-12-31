@@ -1,23 +1,10 @@
 import Dropplet from "./Dropplet";
 
-export default function Task({
-  list,
-  completed,
-  completeTask,
-  deleteItem,
-  activeCategory,
-}) {
-  const filteredList = list.filter((item) => {
-    if (activeCategory === "all") {
-      return true;
-    } else {
-      return item.includes(activeCategory);
-    }
-  });
+export default function Task({ list, completed, completeTask, deleteItem }) {
   return (
-    <div>
-      <ul className="py-4">
-        {filteredList.map((item, index) => {
+    <div className="">
+      <ul className="py-4 h-fit over">
+        {list.map((item, index) => {
           return (
             <div
               key={index}
@@ -36,7 +23,7 @@ export default function Task({
                     : completeTask(item)
                 }
               >
-                {item[0] + (completed.includes(item) ? "✔" : "")}
+                {item[0] + completed.includes(item)}
               </span>
             </div>
           );
