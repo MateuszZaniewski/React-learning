@@ -1,6 +1,7 @@
 import Dropplet from "./Dropplet";
 
 export default function Task({ list, completed, completeTask, deleteItem }) {
+  console.log(list);
   return (
     <div className="">
       <ul className="py-4 h-fit over">
@@ -23,7 +24,7 @@ export default function Task({ list, completed, completeTask, deleteItem }) {
                     : completeTask(item)
                 }
               >
-                {item[0] + completed.includes(item)}
+                {item[0]}
               </span>
             </div>
           );

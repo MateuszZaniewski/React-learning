@@ -108,17 +108,21 @@ export default function ToDoContainer() {
           />
         </div>
       </div>
-      <div className="lg:hidden">
+      <div className="lg:hidden bg-gray-100 w-[90%] mx-auto rounded-lg h-[90vmax] max-w-[500px]">
         <Form onSubmit={getData} />
-        <div className="flex justify-center items-center gap-2 pt-4">
+        <div className="flex justify-center items-center flex-wrap gap-2 py-4">
           <span className="text-xs">Options: </span>
           <div className="flex gap-4">
             <Button
               name={"Complete all"}
-              color={"blue-400"}
+              color={"bg-[#2b7a40]"}
               task={completeAll}
             />
-            <Button name={"Clear list"} color={"red-400"} task={clearAll} />
+            <Button
+              name={"Clear list"}
+              color={"bg-[#9e2333]"}
+              task={clearAll}
+            />
           </div>
         </div>
         <Statistics

@@ -13,7 +13,15 @@ export default function DetailsView({
 }) {
   const resolveCurrentView = () => {
     if (activeTab === "Upcoming") {
-      return <UpcomingView />;
+      return (
+        <UpcomingView
+          list={list}
+          completed={completed}
+          completeTask={completeTask}
+          deleteItem={deleteItem}
+          activeCategory={selectedCategory}
+        />
+      );
     } else if (activeTab === "Today") {
       return (
         <TodayView

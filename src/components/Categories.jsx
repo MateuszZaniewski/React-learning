@@ -32,7 +32,7 @@ export default function Categories({ list, onButton }) {
   calculateNumberOfTaksPerCategory();
 
   return (
-    <div className="pt-2 flex justify-start overflow-auto max-w-sm md:max-w-lg gap-2 w-[90%] mx-auto no-scrollbar lg:flex-col lg:w-full">
+    <div className="lg:pt-2 flex lg:items-stretch items-center justify-start overflow-auto lg:max-w-sm md:max-w-lg lg:gap-2 w-[90%] mx-auto no-scrollbar lg:flex-col lg:w-full">
       <Button name={"All"} color={"bg-white"} task={handleButton} number={1} />
       <Button
         name={"Home"}

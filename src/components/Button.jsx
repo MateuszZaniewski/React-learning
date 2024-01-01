@@ -1,6 +1,6 @@
 export default function Button({ name, color, task, number }) {
   return (
-    <div className="flex items-center hover:bg-gray-300 rounded-lg">
+    <div className="flex items-center hover:bg-gray-300 rounded-lg h-fit">
       <div className="flex items-center gap-2 justify-start px-2 py-1 rounded-lg rounded-bl-lg  w-full">
         <div className={`h-4 w-6 rounded-lg ${color}`}></div>
         <button className="" onClick={task}>

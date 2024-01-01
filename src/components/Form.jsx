@@ -1,12 +1,15 @@
 import { useState } from "react";
+import getDate from "../helperFunctions/currentDate";
 
 export default function Form(props) {
   const [item, setItem] = useState("");
   const [category, setCategory] = useState("home");
+
   const handleSubmit = (e) => {
-    console.log(e);
+    const date = getDate();
+    console.log(date);
     e.preventDefault();
-    props.onSubmit([item, category]);
+    props.onSubmit([item, category, date]);
     setItem("");
   };
 
@@ -20,10 +23,10 @@ export default function Form(props) {
   };
 
   return (
-    <div className="pt-2 flex justify-center lg:justify-start lg:pl-2">
+    <div className="pt-6 lg:pt-0 flex justify-center lg:justify-start lg:pl-2">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-2 sm:flex-row sm:gap-4 items-center lg:flex-col lg:pt-7 lg:items-start"
+        className="flex flex-col gap-2 sm:flex-row sm:gap-4 items-center lg:flex-col lg:pt-2 lg:items-start"
       >
         <div className="flex gap-2">
           <input
