@@ -1,6 +1,12 @@
 import Dropplet from "./Dropplet";
 
-export default function Task({ list, completed, completeTask, deleteItem }) {
+export default function Task({
+  list,
+  completed,
+  completeTask,
+  deleteItem,
+  showDate,
+}) {
   console.log(list);
   return (
     <div className="">
@@ -26,6 +32,7 @@ export default function Task({ list, completed, completeTask, deleteItem }) {
               >
                 {item[0]}
               </span>
+              <span>{showDate ? item[2] : ""}</span>
             </div>
           );
         })}

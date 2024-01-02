@@ -1,6 +1,8 @@
 import Task from "./Task";
 import TimeSortedTasks from "./TimeSortedTasks";
 
+import "react-datepicker/dist/react-datepicker.css";
+
 export default function UppcommingView({
   list,
   completed,
@@ -23,6 +25,7 @@ export default function UppcommingView({
           completeTask={completeTask}
           deleteItem={deleteItem}
           activeCategory={selectedCategory}
+          showDate={true}
         />
         <TimeSortedTasks list={list} />
       </div>
