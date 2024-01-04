@@ -1,6 +1,4 @@
 export default function Dropplet({ category }) {
-  console.log(category);
-
   const setColorDropplet = () => {
     if (category === "home") {
       return <div className="w-8 h-5 rounded-xl bg-[#845EC2]"></div>;

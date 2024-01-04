@@ -7,18 +7,9 @@ export default function Form(props) {
   const [startDate, setStartDate] = useState(new Date());
 
   const handleSubmit = (e) => {
-    const date = formatDate(startDate);
-    console.log(date);
     e.preventDefault();
-    props.onSubmit([item, category, date]);
+    props.onSubmit([item, category, startDate]);
     setItem("");
-  };
-
-  const formatDate = (date) => {
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    return `${year}/${month}/${day}`;
   };
 
   const handleChange = (e) => {

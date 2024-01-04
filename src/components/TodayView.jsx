@@ -1,5 +1,6 @@
 import Task from "./Task";
 import getDate from "../helperFunctions/currentDate";
+import formatDate from "../helperFunctions/formatDate";
 
 export default function TodayView({
   list,
@@ -10,7 +11,7 @@ export default function TodayView({
 }) {
   const todaysTasks = () => {
     return list.filter((task) => {
-      return task[2] === getDate();
+      return getDate() === formatDate(task[2]);
     });
   };
 

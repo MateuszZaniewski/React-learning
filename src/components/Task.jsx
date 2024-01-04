@@ -7,7 +7,6 @@ export default function Task({
   deleteItem,
   showDate,
 }) {
-  console.log(list);
   return (
     <div className="">
       <ul className="py-4 h-fit over">
@@ -32,7 +31,7 @@ export default function Task({
               >
                 {item[0]}
               </span>
-              <span>{showDate ? item[2] : ""}</span>
+              <span>{showDate ? item[2].toString() : ""}</span>
             </div>
           );
         })}

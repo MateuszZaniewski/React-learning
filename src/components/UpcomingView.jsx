@@ -1,6 +1,4 @@
-import Task from "./Task";
 import TimeSortedTasks from "./TimeSortedTasks";
-
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function UppcommingView({
@@ -18,8 +16,8 @@ export default function UppcommingView({
       <div className="pt-6 flex flex-col gap-2 text-xl">
         <h2>This is a list with Your incoming tasks to do</h2>
       </div>
-      <div className="flex justify-start overflow-y-auto max-h-[75vmin]">
-        <Task
+      <div className="flex flex-col justify-start overflow-y-auto max-h-[75vmin]">
+        <TimeSortedTasks
           list={list}
           completed={completed}
           completeTask={completeTask}
@@ -27,7 +25,6 @@ export default function UppcommingView({
           activeCategory={selectedCategory}
           showDate={true}
         />
-        <TimeSortedTasks list={list} />
       </div>
     </div>
   );

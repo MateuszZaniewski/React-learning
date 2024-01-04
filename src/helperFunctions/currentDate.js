@@ -5,3 +5,5 @@ export default function getDate() {
   const day = today.getDate();
   return `${year}/${month}/${day}`;
 }
+
+// returns current day in yyyy/mm/dd format
