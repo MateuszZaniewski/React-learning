@@ -8,8 +8,9 @@ export default function DetailsView({
   list,
   completed,
   completeTask,
-  deleteItem,
+  unCompleteItem,
   selectedCategory,
+  deleteTask,
 }) {
   const resolveCurrentView = () => {
     if (activeTab === "Upcoming") {
@@ -18,8 +19,9 @@ export default function DetailsView({
           list={list}
           completed={completed}
           completeTask={completeTask}
-          deleteItem={deleteItem}
+          unCompleteItem={unCompleteItem}
           activeCategory={selectedCategory}
+          deleteTask={deleteTask}
         />
       );
     } else if (activeTab === "Today") {
@@ -28,8 +30,9 @@ export default function DetailsView({
           list={list}
           completed={completed}
           completeTask={completeTask}
-          deleteItem={deleteItem}
+          unCompleteItem={unCompleteItem}
           activeCategory={selectedCategory}
+          deleteTask={deleteTask}
         />
       );
     } else if (activeTab === "Calendar") {

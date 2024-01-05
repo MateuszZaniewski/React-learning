@@ -6,8 +6,9 @@ export default function TodayView({
   list,
   completed,
   completeTask,
-  deleteItem,
+  unCompleteItem,
   selectedCategory,
+  deleteTask,
 }) {
   const todaysTasks = () => {
     return list.filter((task) => {
@@ -35,8 +36,9 @@ export default function TodayView({
           list={todaysTasks()}
           completed={completed}
           completeTask={completeTask}
-          deleteItem={deleteItem}
+          unCompleteItem={unCompleteItem}
           activeCategory={selectedCategory}
+          deleteTask={deleteTask}
         />
       </div>
     </div>

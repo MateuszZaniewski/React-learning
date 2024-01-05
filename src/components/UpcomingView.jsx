@@ -5,25 +5,23 @@ export default function UppcommingView({
   list,
   completed,
   completeTask,
-  deleteItem,
+  unCompleteItem,
   selectedCategory,
+  deleteTask,
 }) {
   return (
     <div className="my-6 ">
       <div className="">
         <h1 className="text-5xl font-bold ">Upcoming Tasks</h1>
       </div>
-      <div className="pt-6 flex flex-col gap-2 text-xl">
-        <h2>This is a list with Your incoming tasks to do</h2>
-      </div>
       <div className="flex flex-col justify-start overflow-y-auto max-h-[75vmin]">
         <TimeSortedTasks
           list={list}
           completed={completed}
           completeTask={completeTask}
-          deleteItem={deleteItem}
+          unCompleteItem={unCompleteItem}
           activeCategory={selectedCategory}
-          showDate={true}
+          deleteTask={deleteTask}
         />
       </div>
     </div>

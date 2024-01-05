@@ -1,20 +1,22 @@
 import Dropplet from "./Dropplet";
+import deleteImage from "../assets/delete.png";
 
 export default function Task({
   list,
   completed,
   completeTask,
-  deleteItem,
+  unCompleteItem,
   showDate,
+  deleteTask,
 }) {
   return (
     <div className="">
-      <ul className="py-4 h-fit over">
+      <ul className="py-4 h-fit">
         {list.map((item, index) => {
           return (
             <div
               key={index}
-              className={`pt-2 flex justify-start items-center max-w-sm md:max-w-lg gap-5 w-[90%] mx-auto`}
+              className={`pt-2 flex justify-start items-center max-w-sm md:max-w-lg gap-2 pb-2 w-[90%] mx-auto`}
             >
               <Dropplet category={item[1]} />
               <span
@@ -22,16 +24,21 @@ export default function Task({
                   completed.includes(item)
                     ? "line-through text-gray-400"
                     : "no-underline"
-                } pb-2 text-xl cursor-pointer`}
+                } text-xl cursor-pointer`}
                 onClick={() =>
                   completed.includes(item)
-                    ? deleteItem(item)
+                    ? unCompleteItem(item)
                     : completeTask(item)
                 }
               >
                 {item[0]}
               </span>
               <span>{showDate ? item[2].toString() : ""}</span>
+              <img
+                onClick={() => deleteTask(item)}
+                className="h-6 w-6"
+                src={deleteImage}
+              />
             </div>
           );
         })}

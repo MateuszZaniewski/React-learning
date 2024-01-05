@@ -34,7 +34,7 @@ export default function ToDoContainer() {
     setSelectedCategory(data);
   };
 
-  const deleteItem = (item) => {
+  const unCompleteItem = (item) => {
     const updatedList = [...completed];
     const index = completed.indexOf(item);
     updatedList.splice(index, 1);
@@ -42,6 +42,16 @@ export default function ToDoContainer() {
   };
   const completeTask = (item) => {
     setCompleted([...completed, item]);
+  };
+
+  const deleteTask = (item) => {
+    console.log(item);
+    console.log(list);
+    const updatedList = list.filter((task) => task !== item);
+    setList(updatedList);
+
+    const updatedCompleted = completed.filter((task) => task !== item);
+    setCompleted(updatedCompleted);
   };
 
   const completeAll = () => {
@@ -103,8 +113,9 @@ export default function ToDoContainer() {
             list={list}
             completed={completed}
             completeTask={completeTask}
-            deleteItem={deleteItem}
+            unCompleteItem={unCompleteItem}
             activeCategory={selectedCategory}
+            deleteTask={deleteTask}
           />
         </div>
       </div>
@@ -140,7 +151,7 @@ export default function ToDoContainer() {
             list={list}
             completed={completed}
             completeTask={completeTask}
-            deleteItem={deleteItem}
+            unCompleteItem={unCompleteItem}
             activeCategory={selectedCategory}
           />
         </ul>

@@ -3,14 +3,14 @@ import formatDate from "../helperFunctions/formatDate";
 import nextDay from "../helperFunctions/nextDay";
 import thisWeekDays from "../helperFunctions/thisWeekDays";
 import thisMonthDays from "../helperFunctions/thisMonthsDates";
-import Dropplet from "./Dropplet";
+import Task from "./Task";
 
 export default function TimeSortedTasks({
   list,
   completed,
   completeTask,
-  deleteItem,
-  showDate,
+  unCompleteItem,
+  deleteTask,
 }) {
   // Works, returns today tasks
   const todaysTasks = () => {
@@ -44,117 +44,49 @@ export default function TimeSortedTasks({
 
   return (
     <div>
-      <div>
-        <h2>Today</h2>
-        {todaysTasks().map((item, index) => {
-          return (
-            <div
-              key={index}
-              className={`pt-2 flex justify-start items-center max-w-sm md:max-w-lg gap-5 w-[90%] mx-auto`}
-            >
-              <Dropplet category={item[1]} />
-              <span
-                className={`${
-                  completed.includes(item)
-                    ? "line-through text-gray-400"
-                    : "no-underline"
-                } pb-2 text-xl cursor-pointer`}
-                onClick={() =>
-                  completed.includes(item)
-                    ? deleteItem(item)
-                    : completeTask(item)
-                }
-              >
-                {item[0]}
-              </span>
-              <span>{showDate ? item[2].toString() : ""}</span>
-            </div>
-          );
-        })}
+      <div className="flex flex-col items-start border-b-2 w-[90%]">
+        <h2 className="text-4xl pt-10">Today</h2>
+        <Task
+          list={todaysTasks()}
+          completed={completed}
+          completeTask={completeTask}
+          unCompleteItem={unCompleteItem}
+          showDate={false}
+          deleteTask={deleteTask}
+        />
       </div>
-      <div>
-        <h2>Tomorow</h2>
-        {tomorowTasks().map((item, index) => {
-          return (
-            <div
-              key={index}
-              className={`pt-2 flex justify-start items-center max-w-sm md:max-w-lg gap-5 w-[90%] mx-auto`}
-            >
-              <Dropplet category={item[1]} />
-              <span
-                className={`${
-                  completed.includes(item)
-                    ? "line-through text-gray-400"
-                    : "no-underline"
-                } pb-2 text-xl cursor-pointer`}
-                onClick={() =>
-                  completed.includes(item)
-                    ? deleteItem(item)
-                    : completeTask(item)
-                }
-              >
-                {item[0]}
-              </span>
-              <span>{showDate ? item[2].toString() : ""}</span>
-            </div>
-          );
-        })}
+      <div className="flex flex-col items-start border-b-2 w-[90%]">
+        <h2 className="text-4xl pt-10">Tomorow</h2>
+        <Task
+          list={tomorowTasks()}
+          completed={completed}
+          completeTask={completeTask}
+          unCompleteItem={unCompleteItem}
+          showDate={false}
+          deleteTask={deleteTask}
+        />
       </div>
-      <div>
-        <h2>This week</h2>
-        {thisWeekTasks().map((item, index) => {
-          return (
-            <div
-              key={index}
-              className={`pt-2 flex justify-start items-center max-w-sm md:max-w-lg gap-5 w-[90%] mx-auto`}
-            >
-              <Dropplet category={item[1]} />
-              <span
-                className={`${
-                  completed.includes(item)
-                    ? "line-through text-gray-400"
-                    : "no-underline"
-                } pb-2 text-xl cursor-pointer`}
-                onClick={() =>
-                  completed.includes(item)
-                    ? deleteItem(item)
-                    : completeTask(item)
-                }
-              >
-                {item[0]}
-              </span>
-              <span>{showDate ? item[2].toString() : ""}</span>
-            </div>
-          );
-        })}
+      <div className="flex flex-col items-start border-b-2 w-[90%]">
+        <h2 className="text-4xl pt-10">This week</h2>
+        <Task
+          list={thisWeekTasks()}
+          completed={completed}
+          completeTask={completeTask}
+          unCompleteItem={unCompleteItem}
+          showDate={false}
+          deleteTask={deleteTask}
+        />
       </div>
-      <div>
-        <h2>This month</h2>
-        {thisMonthTasks().map((item, index) => {
-          return (
-            <div
-              key={index}
-              className={`pt-2 flex justify-start items-center max-w-sm md:max-w-lg gap-5 w-[90%] mx-auto`}
-            >
-              <Dropplet category={item[1]} />
-              <span
-                className={`${
-                  completed.includes(item)
-                    ? "line-through text-gray-400"
-                    : "no-underline"
-                } pb-2 text-xl cursor-pointer`}
-                onClick={() =>
-                  completed.includes(item)
-                    ? deleteItem(item)
-                    : completeTask(item)
-                }
-              >
-                {item[0]}
-              </span>
-              <span>{showDate ? item[2].toString() : ""}</span>
-            </div>
-          );
-        })}
+      <div className="flex flex-col items-start border-b-2 w-[90%]">
+        <h2 className="text-4xl pt-10">This month</h2>
+        <Task
+          list={thisMonthTasks()}
+          completed={completed}
+          completeTask={completeTask}
+          unCompleteItem={unCompleteItem}
+          showDate={false}
+          deleteTask={deleteTask}
+        />
       </div>
     </div>
   );
