@@ -1,6 +1,7 @@
 import Task from "./Task";
 import getDate from "../helperFunctions/currentDate";
 import formatDate from "../helperFunctions/formatDate";
+import NoTasksInfo from "./NoTasksInfo";
 
 export default function TodayView({
   list,
@@ -32,14 +33,19 @@ export default function TodayView({
         </h2>
       </div>
       <div className="flex justify-start overflow-y-auto max-h-[75vmin]">
-        <Task
-          list={todaysTasks()}
-          completed={completed}
-          completeTask={completeTask}
-          unCompleteItem={unCompleteItem}
-          activeCategory={selectedCategory}
-          deleteTask={deleteTask}
-        />
+        <div className={list.length < 1 ? "block" : "hidden"}>
+          <NoTasksInfo day={"today"} />
+        </div>
+        <div className={list.length > 0 ? "block" : "hidden"}>
+          <Task
+            list={todaysTasks()}
+            completed={completed}
+            completeTask={completeTask}
+            unCompleteItem={unCompleteItem}
+            activeCategory={selectedCategory}
+            deleteTask={deleteTask}
+          />
+        </div>
       </div>
     </div>
   );

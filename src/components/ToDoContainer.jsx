@@ -146,15 +146,18 @@ export default function ToDoContainer() {
 
         <Categories list={list} onButton={getButtonData} />
 
-        <ul className="pb-4">
-          <Task
-            list={list}
-            completed={completed}
-            completeTask={completeTask}
-            unCompleteItem={unCompleteItem}
-            activeCategory={selectedCategory}
-          />
-        </ul>
+        <div className={list.length < 1 ? "hidden" : "block"}>
+          <ul className="pb-4 flex justify-center bg-gray-200">
+            <Task
+              list={list}
+              completed={completed}
+              completeTask={completeTask}
+              unCompleteItem={unCompleteItem}
+              activeCategory={selectedCategory}
+              deleteTask={deleteTask}
+            />
+          </ul>
+        </div>
       </div>
     </div>
   );

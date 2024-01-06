@@ -4,6 +4,7 @@ import nextDay from "../helperFunctions/nextDay";
 import thisWeekDays from "../helperFunctions/thisWeekDays";
 import thisMonthDays from "../helperFunctions/thisMonthsDates";
 import Task from "./Task";
+import NoTasksInfo from "./NoTasksInfo";
 
 export default function TimeSortedTasks({
   list,
@@ -45,48 +46,68 @@ export default function TimeSortedTasks({
   return (
     <div>
       <div className="flex flex-col items-start border-b-2 w-[90%]">
-        <h2 className="text-4xl pt-10">Today</h2>
-        <Task
-          list={todaysTasks()}
-          completed={completed}
-          completeTask={completeTask}
-          unCompleteItem={unCompleteItem}
-          showDate={false}
-          deleteTask={deleteTask}
-        />
+        <h2 className="text-4xl pt-10 font-poppins">Today</h2>
+        <div className={todaysTasks().length > 0 ? "block" : "hidden"}>
+          <Task
+            list={todaysTasks()}
+            completed={completed}
+            completeTask={completeTask}
+            unCompleteItem={unCompleteItem}
+            showDate={false}
+            deleteTask={deleteTask}
+          />
+        </div>
+        <div className={todaysTasks().length < 1 ? "block" : "hidden"}>
+          <NoTasksInfo day={"today"} />
+        </div>
       </div>
       <div className="flex flex-col items-start border-b-2 w-[90%]">
-        <h2 className="text-4xl pt-10">Tomorow</h2>
-        <Task
-          list={tomorowTasks()}
-          completed={completed}
-          completeTask={completeTask}
-          unCompleteItem={unCompleteItem}
-          showDate={false}
-          deleteTask={deleteTask}
-        />
+        <h2 className="text-4xl pt-10 font-poppins">Tomorrow</h2>
+        <div className={tomorowTasks().length > 0 ? "block" : "hidden"}>
+          <Task
+            list={tomorowTasks()}
+            completed={completed}
+            completeTask={completeTask}
+            unCompleteItem={unCompleteItem}
+            showDate={false}
+            deleteTask={deleteTask}
+          />
+        </div>
+        <div className={tomorowTasks().length < 1 ? "block" : "hidden"}>
+          <NoTasksInfo day={"tomorrow"} />
+        </div>
       </div>
       <div className="flex flex-col items-start border-b-2 w-[90%]">
-        <h2 className="text-4xl pt-10">This week</h2>
-        <Task
-          list={thisWeekTasks()}
-          completed={completed}
-          completeTask={completeTask}
-          unCompleteItem={unCompleteItem}
-          showDate={false}
-          deleteTask={deleteTask}
-        />
+        <h2 className="text-4xl pt-10 font-poppins">This week</h2>
+        <div className={thisWeekTasks().length > 0 ? "block" : "hidden"}>
+          <Task
+            list={thisWeekTasks()}
+            completed={completed}
+            completeTask={completeTask}
+            unCompleteItem={unCompleteItem}
+            showDate={false}
+            deleteTask={deleteTask}
+          />
+        </div>
+        <div className={thisWeekTasks().length < 1 ? "block" : "hidden"}>
+          <NoTasksInfo day={"this week"} />
+        </div>
       </div>
       <div className="flex flex-col items-start border-b-2 w-[90%]">
-        <h2 className="text-4xl pt-10">This month</h2>
-        <Task
-          list={thisMonthTasks()}
-          completed={completed}
-          completeTask={completeTask}
-          unCompleteItem={unCompleteItem}
-          showDate={false}
-          deleteTask={deleteTask}
-        />
+        <h2 className="text-4xl pt-10 font-poppins">This month</h2>
+        <div className={thisMonthTasks().length > 0 ? "block" : "hidden"}>
+          <Task
+            list={thisMonthTasks()}
+            completed={completed}
+            completeTask={completeTask}
+            unCompleteItem={unCompleteItem}
+            showDate={false}
+            deleteTask={deleteTask}
+          />
+        </div>
+        <div className={thisMonthTasks().length < 1 ? "block" : "hidden"}>
+          <NoTasksInfo day={"this month"} />
+        </div>
       </div>
     </div>
   );

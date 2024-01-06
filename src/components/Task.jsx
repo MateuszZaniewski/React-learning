@@ -11,12 +11,12 @@ export default function Task({
 }) {
   return (
     <div className="">
-      <ul className="py-4 h-fit">
+      <ul className="py-4 h-fit w-fit border px-4 my-4 rounded-lg bg-gray-200">
         {list.map((item, index) => {
           return (
             <div
               key={index}
-              className={`pt-2 flex justify-start items-center max-w-sm md:max-w-lg gap-2 pb-2 w-[90%] mx-auto`}
+              className={`pt-2 flex justify-start items-center max-w-sm md:max-w-lg lg:max-w-3xl gap-2 pb-2 w-fit`}
             >
               <Dropplet category={item[1]} />
               <span
