@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-export default function NoteForm({ onSubmit, setNoteCreation, noteCreation }) {
+export default function NoteForm({
+  addNote,
+  setNoteCreation,
+  noteCreation,
+  notes,
+}) {
   const [color, setColor] = useState("bg-green-300");
   const [tittle, setTittle] = useState("");
   const [text, setText] = useState("");
@@ -12,7 +17,14 @@ export default function NoteForm({ onSubmit, setNoteCreation, noteCreation }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit([tittle, text, color]);
+    const note = {
+      id: notes.length === undefined ? 0 : notes.length,
+      tittle: tittle,
+      text: text,
+      color: color,
+      edit: false,
+    };
+    addNote(note);
     setTittle("");
     setText("");
     setColor("bg-green-300");
@@ -32,7 +44,13 @@ export default function NoteForm({ onSubmit, setNoteCreation, noteCreation }) {
       className={`h-[60vmin] w-[450px] mt-5 px-4 pb-4 border rounded-lg ${color}`}
     >
       <form onSubmit={handleSubmit} className="flex flex-col">
-        <div className="w-full flex justify-end pt-4">
+        <div className="w-full flex justify-between pt-4">
+          <span
+            className="px-2 py-1 border border-gray-500 bg-white rounded-lg text-xl"
+            onClick={() => setNoteCreation(!noteCreation)}
+          >
+            Cancel
+          </span>
           <button
             className="px-2 py-1 border border-gray-500 bg-white rounded-lg text-xl"
             type="submit"

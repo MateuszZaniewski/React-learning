@@ -1,6 +1,9 @@
 import { useState } from "react";
 import NoteForm from "./NoteForm";
 import add from "../assets/add.png";
+import deleteIcon from "../assets/delete.png";
+import editIcon from "../assets/edit.png";
+import checkIcon from "../assets/check.png";
 
 export default function StickyWallView() {
   const [notes, setNotes] = useState([]);
@@ -8,12 +11,29 @@ export default function StickyWallView() {
 
   const getData = (data) => {
     setNotes([...notes, data]);
-    console.log(notes);
   };
 
-  const addNote = (title) => {
-    const note = title;
+  const addNote = (note) => {
     setNotes([...notes, note]);
+  };
+
+  const deleteNote = (id) => {
+    const updatedList = notes.filter((note) => note.id !== id);
+    setNotes(updatedList);
+  };
+
+  /// BROKEN CODE, FIX THIS ////
+
+  const handleEditClick = (id) => {
+    console.log(id);
+    const updatedNotes = [...notes];
+    const note = updatedNotes[id];
+
+    if (note) {
+      // Check if 'edit' property exists before toggling
+      note.edit = !note.edit;
+      setNotes(updatedNotes);
+    }
   };
 
   return (
@@ -34,14 +54,7 @@ export default function StickyWallView() {
         className={`pt-8 justify-between items-center ${
           noteCreation ? "flex" : "hidden"
         }`}
-      >
-        <span
-          onClick={() => setNoteCreation(!noteCreation)}
-          className="text-xl"
-        >
-          Cancel
-        </span>
-      </div>
+      ></div>
       <div className="flex flex-col justify-start overflow-y-auto max-h-[75vmin]">
         <div className={noteCreation ? "block" : "hidden"}>
           <NoteForm
@@ -49,17 +62,44 @@ export default function StickyWallView() {
             onSubmit={getData}
             setNoteCreation={setNoteCreation}
             noteCreation={noteCreation}
+            notes={notes}
           />
         </div>
 
-        <ul>
+        <ul className="py-4 flex flex-col gap-4">
           {notes.map((item, index) => {
             return (
               <div
                 key={index}
-                className={`pt-2 flex justify-start items-center max-w-sm md:max-w-lg lg:max-w-3xl gap-2 pb-2 w-fit`}
+                className={`py-4 border w-[350px] h-auto ${item.color} rounded-xl overflow-x-hidden no-scrollbar`}
               >
-                <span key={index}>{item[0]}</span>
+                <div className="px-4 py-3 flex flex-col gap-4 relative">
+                  <img
+                    src={editIcon}
+                    onClick={() => handleEditClick(item.id)}
+                    className={`h-4 w-4 absolute top-0 right-4 ${
+                      item.edit ? "hidden" : "block"
+                    }`}
+                  />
+                  <img
+                    src={deleteIcon}
+                    onClick={() => deleteNote(item.id)}
+                    className={`h-6 w-6 absolute top-0 right-14 ${
+                      !item.edit ? "hidden" : "block"
+                    }`}
+                  />
+                  <img
+                    src={checkIcon}
+                    onClick={() => handleEditClick(item.id)}
+                    className={`h-6 w-6 absolute top-0 right-4 ${
+                      !item.edit ? "hidden" : "block"
+                    }`}
+                  />
+                  <span className="text-2xl font-bold" key={item.id}>
+                    {item.tittle}
+                  </span>
+                  <span className="text-lg leading-6">{item.text}</span>
+                </div>
               </div>
             );
           })}
