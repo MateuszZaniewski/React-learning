@@ -5,8 +5,7 @@ import deleteIcon from "../assets/delete.png";
 import editIcon from "../assets/edit.png";
 import checkIcon from "../assets/check.png";
 
-export default function StickyWallView() {
-  const [notes, setNotes] = useState([]);
+export default function StickyWallView({ notes, setNotes }) {
   const [noteCreation, setNoteCreation] = useState(false);
 
   const getData = (data) => {
@@ -22,18 +21,25 @@ export default function StickyWallView() {
     setNotes(updatedList);
   };
 
-  /// BROKEN CODE, FIX THIS ////
+  const handleTitleChange = (e, id) => {
+    const updatedNotes = notes.map((note) =>
+      note.id === id ? { ...note, title: e.target.value } : note
+    );
+    setNotes(updatedNotes);
+  };
+
+  const handleTextChange = (e, id) => {
+    const updatedNotes = notes.map((note) =>
+      note.id === id ? { ...note, text: e.target.value } : note
+    );
+    setNotes(updatedNotes);
+  };
 
   const handleEditClick = (id) => {
-    console.log(id);
-    const updatedNotes = [...notes];
-    const note = updatedNotes[id];
-
-    if (note) {
-      // Check if 'edit' property exists before toggling
-      note.edit = !note.edit;
-      setNotes(updatedNotes);
-    }
+    const updatedNotes = notes.map((note) =>
+      note.id === id ? { ...note, edit: !note.edit } : note
+    );
+    setNotes(updatedNotes);
   };
 
   return (
@@ -95,10 +101,32 @@ export default function StickyWallView() {
                       !item.edit ? "hidden" : "block"
                     }`}
                   />
-                  <span className="text-2xl font-bold" key={item.id}>
-                    {item.tittle}
-                  </span>
-                  <span className="text-lg leading-6">{item.text}</span>
+                  {item.edit ? (
+                    <>
+                      <input
+                        className="resize-none h-[5vmin] rounded-lg py-1 px-2 mt-5"
+                        onChange={(e) => handleTitleChange(e, item.id)}
+                        value={item.title}
+                      ></input>
+                      <textarea
+                        className="resize-none h-[20vmin] rounded-lg py-1 px-2"
+                        onChange={(e) => handleTextChange(e, item.id)}
+                        value={item.text}
+                      ></textarea>
+                    </>
+                  ) : (
+                    <div className="flex flex-col gap-6 overflow-auto no-scrollbar break-words">
+                      <span
+                        className="text-2xl font-bold whitespace-normal"
+                        key={item.id}
+                      >
+                        {item.title}
+                      </span>
+                      <span className="text-lg leading-6 whitespace-pre-line">
+                        {item.text}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             );

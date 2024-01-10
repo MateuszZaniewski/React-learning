@@ -16,6 +16,7 @@ export default function ToDoContainer() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [showCategories, setShowCategories] = useState(true);
   const [activeListsTab, setActiveListsTab] = useState("Today");
+  const [notes, setNotes] = useState([]);
 
   const getData = (data) => {
     setList([...list, data]);
@@ -116,6 +117,8 @@ export default function ToDoContainer() {
             unCompleteItem={unCompleteItem}
             activeCategory={selectedCategory}
             deleteTask={deleteTask}
+            notes={notes}
+            setNotes={setNotes}
           />
         </div>
       </div>

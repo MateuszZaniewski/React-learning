@@ -11,6 +11,8 @@ export default function DetailsView({
   unCompleteItem,
   selectedCategory,
   deleteTask,
+  notes,
+  setNotes,
 }) {
   const resolveCurrentView = () => {
     if (activeTab === "Upcoming") {
@@ -38,7 +40,7 @@ export default function DetailsView({
     } else if (activeTab === "Calendar") {
       return <CalendarView />;
     } else {
-      return <StickyWallView />;
+      return <StickyWallView notes={notes} setNotes={setNotes} />;
     }
   };
 

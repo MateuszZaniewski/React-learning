@@ -7,7 +7,7 @@ export default function NoteForm({
   notes,
 }) {
   const [color, setColor] = useState("bg-green-300");
-  const [tittle, setTittle] = useState("");
+  const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
   const handleSelectChange = (e) => {
@@ -19,20 +19,20 @@ export default function NoteForm({
     e.preventDefault();
     const note = {
       id: notes.length === undefined ? 0 : notes.length,
-      tittle: tittle,
+      title: title,
       text: text,
       color: color,
       edit: false,
     };
     addNote(note);
-    setTittle("");
+    setTitle("");
     setText("");
     setColor("bg-green-300");
     setNoteCreation(!noteCreation);
   };
 
   const handleTitleChange = (e) => {
-    setTittle(e.target.value);
+    setTitle(e.target.value);
   };
 
   const handleTextChange = (e) => {
@@ -58,16 +58,16 @@ export default function NoteForm({
             Save
           </button>
         </div>
-        <label className="text-2xl py-2">Tittle:</label>
+        <label className="text-2xl py-2">Title:</label>
         <input
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               e.preventDefault();
             }
           }}
-          value={tittle}
+          value={title}
           onChange={handleTitleChange}
-        ></input>
+        />
         <label className="text-2xl py-2">Text:</label>
         <textarea
           value={text}
