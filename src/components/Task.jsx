@@ -11,7 +11,7 @@ export default function Task({
 }) {
   return (
     <div className="">
-      <ul className="py-4 h-fit w-fit border px-4 my-4 rounded-lg bg-gray-200">
+      <ul className="py-4 h-fit w-fit px-8 lg:px-4 my-4 rounded-lg lg:bg-gray-200">
         {list.map((item, index) => {
           return (
             <div

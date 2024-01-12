@@ -150,7 +150,7 @@ export default function ToDoContainer() {
         <Categories list={list} onButton={getButtonData} />
 
         <div className={list.length < 1 ? "hidden" : "block"}>
-          <ul className="pb-4 flex justify-center bg-gray-200">
+          <ul className="lg:pb-4 flex justify-start lg:justify-center">
             <Task
               list={list}
               completed={completed}
