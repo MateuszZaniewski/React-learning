@@ -2,12 +2,12 @@ import getDate from "../helperFunctions/currentDate";
 export default function DaysCarousel({ weekDays }) {
   const today = getDate().slice(-2);
   return (
-    <div className="flex justify-center gap-[5%]">
+    <div className="flex justify-center gap-[7%]">
       {weekDays.map((day) => {
         return (
           <div key={day} className="">
             <div
-              className={`flex flex-col items-center font-bold px-2 py-3 w-14 border rounded-xl bg-gray-200 ${
+              className={`flex flex-col items-center font-bold px-2 py-3 w-16 border rounded-xl bg-gray-200 ${
                 today === day[2] ? "bg-gray-400" : ""
               }`}
             >

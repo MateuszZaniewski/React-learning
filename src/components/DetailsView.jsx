@@ -38,7 +38,7 @@ export default function DetailsView({
         />
       );
     } else if (activeTab === "Calendar") {
-      return <CalendarView />;
+      return <CalendarView list={list} completed={completed} />;
     } else {
       return <StickyWallView notes={notes} setNotes={setNotes} />;
     }
