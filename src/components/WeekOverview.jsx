@@ -7,7 +7,7 @@ export default function WeekOverview({
   function setColorDropplet(task, categories) {
     for (const el of categories) {
       if (task[1] === el.name) {
-        return `bg-[${el.color}]`;
+        return el.color;
       }
     }
   }

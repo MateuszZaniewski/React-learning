@@ -18,13 +18,13 @@ export default function ToDoContainer() {
   const [activeListsTab, setActiveListsTab] = useState("Today");
   const [notes, setNotes] = useState([]);
   const [categories, setCategories] = useState([
-    { name: "All", count: 0, color: "#F4EFEF" },
-    { name: "Home", count: 0, color: "#845EC2" },
-    { name: "Health", count: 0, color: "#D65DB1" },
-    { name: "Finance", count: 0, color: "#FF6F91" },
-    { name: "Personal", count: 0, color: "#FF9671" },
-    { name: "Work", count: 0, color: "#FFC75F" },
-    { name: "Shopping", count: 0, color: "#F9F871" },
+    { name: "All", count: 0, color: "bg-[#F4EFEF]" },
+    { name: "Home", count: 0, color: "bg-[#845EC2]" },
+    { name: "Health", count: 0, color: "bg-[#D65DB1]" },
+    { name: "Finance", count: 0, color: "bg-[#FF6F91]" },
+    { name: "Personal", count: 0, color: "bg-[#FF9671]" },
+    { name: "Work", count: 0, color: "bg-[#FFC75F]" },
+    { name: "Shopping", count: 0, color: "bg-[#F9F871]" },
   ]);
 
   const getData = (data) => {
@@ -91,7 +91,7 @@ export default function ToDoContainer() {
                 onChangeActiveList={handleActiveListsTab}
               />
             </div>
-            <div className="rounded-xl w-[90%] mx-auto">
+            <div className="rounded-xl w-[90%] mx-auto relative">
               <div
                 onClick={() => handleCategories()}
                 className="flex items-center justify-between"

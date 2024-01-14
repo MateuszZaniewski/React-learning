@@ -1,4 +1,5 @@
 export default function Dropplet({ category, categories }) {
+  console.log(category);
   return (
     <div>
       {categories.map((el) => {
@@ -6,7 +7,7 @@ export default function Dropplet({ category, categories }) {
           return (
             <div
               key={el.color}
-              className={`w-12 h-8 rounded-xl bg-[${el.color}]`}
+              className={`w-12 h-8 rounded-xl ${el.color}`}
             ></div>
           );
         }
@@ -14,3 +15,5 @@ export default function Dropplet({ category, categories }) {
     </div>
   );
 }
+
+// ${el.color}
