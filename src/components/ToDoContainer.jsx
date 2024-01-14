@@ -17,8 +17,18 @@ export default function ToDoContainer() {
   const [showCategories, setShowCategories] = useState(true);
   const [activeListsTab, setActiveListsTab] = useState("Today");
   const [notes, setNotes] = useState([]);
+  const [categories, setCategories] = useState([
+    { name: "All", count: 0, color: "#F4EFEF" },
+    { name: "Home", count: 0, color: "#845EC2" },
+    { name: "Health", count: 0, color: "#D65DB1" },
+    { name: "Finance", count: 0, color: "#FF6F91" },
+    { name: "Personal", count: 0, color: "#FF9671" },
+    { name: "Work", count: 0, color: "#FFC75F" },
+    { name: "Shopping", count: 0, color: "#F9F871" },
+  ]);
 
   const getData = (data) => {
+    console.log(data);
     setList([...list, data]);
   };
 
@@ -46,11 +56,8 @@ export default function ToDoContainer() {
   };
 
   const deleteTask = (item) => {
-    console.log(item);
-    console.log(list);
     const updatedList = list.filter((task) => task !== item);
     setList(updatedList);
-
     const updatedCompleted = completed.filter((task) => task !== item);
     setCompleted(updatedCompleted);
   };
@@ -74,7 +81,7 @@ export default function ToDoContainer() {
 
             <div className="rounded-xl w-[90%] mx-auto my-5">
               <h3 className="uppercase text-sm px-2 py-2 font-bold">Tasks</h3>
-              <Form onSubmit={getData} />
+              <Form onSubmit={getData} categories={categories} />
             </div>
 
             <div className="rounded-xl w-[90%] mx-auto my-5">
@@ -95,7 +102,12 @@ export default function ToDoContainer() {
                 <img src={showCategories ? up : down} className="h-6 w-6" />
               </div>
               <div className={showCategories ? "block" : "hidden"}>
-                <Categories list={list} onButton={getButtonData} />
+                <Categories
+                  list={list}
+                  onButton={getButtonData}
+                  categories={categories}
+                  setCategories={setCategories}
+                />
               </div>
             </div>
             <div className="rounded-xl w-[90%] mx-auto my-5">
@@ -119,11 +131,13 @@ export default function ToDoContainer() {
             deleteTask={deleteTask}
             notes={notes}
             setNotes={setNotes}
+            categories={categories}
+            setCategories={setCategories}
           />
         </div>
       </div>
       <div className="lg:hidden bg-gray-100 w-[90%] mx-auto rounded-lg h-[90vmax] max-w-[500px]">
-        <Form onSubmit={getData} />
+        <Form onSubmit={getData} categories={categories} />
         <div className="flex justify-center items-center flex-wrap gap-2 py-4">
           <span className="text-xs">Options: </span>
           <div className="flex gap-4">
@@ -147,7 +161,12 @@ export default function ToDoContainer() {
           <hr />
         </div>
 
-        <Categories list={list} onButton={getButtonData} />
+        <Categories
+          list={list}
+          onButton={getButtonData}
+          categories={categories}
+          setCategories={setCategories}
+        />
 
         <div className={list.length < 1 ? "hidden" : "block"}>
           <ul className="lg:pb-4 flex justify-start lg:justify-center">
@@ -158,6 +177,8 @@ export default function ToDoContainer() {
               unCompleteItem={unCompleteItem}
               activeCategory={selectedCategory}
               deleteTask={deleteTask}
+              categories={categories}
+              setCategories={setCategories}
             />
           </ul>
         </div>

@@ -1,15 +1,14 @@
 import thisWeekDays from "../helperFunctions/thisWeekDays";
 import WeekOverview from "./WeekOverview";
 import DaysCarousel from "./DaysCarousel";
-import SingleDayCalendar from "./SingleDayCalendar";
 import prevImg from "../assets/prev.png";
 import nextImg from "../assets/next.png";
 import { useEffect, useState } from "react";
 
-export default function CalendarView({ list, completed }) {
+export default function CalendarView({ list, completed, categories }) {
   const [weekDays, setWeekDays] = useState([]);
   const [topInfo, setTopInfo] = useState("");
-  const [numberOfDays, setNumberOfDays] = useState(0);
+  const [numberOfDays, setNumberOfDays] = useState(-2);
 
   useEffect(() => {
     console.log("Days loaded successfully");
@@ -49,8 +48,12 @@ export default function CalendarView({ list, completed }) {
       </div>
       <div className="flex flex-col justify-start overflow-y-auto max-h-[75vmin]">
         <DaysCarousel weekDays={weekDays} setWeekDays={setWeekDays} />
-        <WeekOverview weekDays={weekDays} list={list} completed={completed} />
-        <SingleDayCalendar />
+        <WeekOverview
+          weekDays={weekDays}
+          list={list}
+          completed={completed}
+          categories={categories}
+        />
       </div>
     </div>
   );

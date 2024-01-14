@@ -8,6 +8,7 @@ export default function Task({
   unCompleteItem,
   showDate,
   deleteTask,
+  categories,
 }) {
   return (
     <div className="">
@@ -18,7 +19,7 @@ export default function Task({
               key={index}
               className={`pt-2 flex justify-start items-center max-w-sm md:max-w-lg lg:max-w-3xl gap-2 pb-2 w-fit`}
             >
-              <Dropplet category={item[1]} />
+              <Dropplet category={item[1]} categories={categories} />
               <span
                 className={`${
                   completed.includes(item)

@@ -13,6 +13,8 @@ export default function DetailsView({
   deleteTask,
   notes,
   setNotes,
+  categories,
+  setCategories,
 }) {
   const resolveCurrentView = () => {
     if (activeTab === "Upcoming") {
@@ -24,6 +26,8 @@ export default function DetailsView({
           unCompleteItem={unCompleteItem}
           activeCategory={selectedCategory}
           deleteTask={deleteTask}
+          categories={categories}
+          setCategories={setCategories}
         />
       );
     } else if (activeTab === "Today") {
@@ -35,10 +39,19 @@ export default function DetailsView({
           unCompleteItem={unCompleteItem}
           activeCategory={selectedCategory}
           deleteTask={deleteTask}
+          categories={categories}
+          setCategories={setCategories}
         />
       );
     } else if (activeTab === "Calendar") {
-      return <CalendarView list={list} completed={completed} />;
+      return (
+        <CalendarView
+          list={list}
+          completed={completed}
+          categories={categories}
+          setCategories={setCategories}
+        />
+      );
     } else {
       return <StickyWallView notes={notes} setNotes={setNotes} />;
     }

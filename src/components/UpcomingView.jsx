@@ -8,6 +8,8 @@ export default function UppcommingView({
   unCompleteItem,
   selectedCategory,
   deleteTask,
+  categories,
+  setCategories,
 }) {
   return (
     <div className="my-6 ">
@@ -22,6 +24,8 @@ export default function UppcommingView({
           unCompleteItem={unCompleteItem}
           activeCategory={selectedCategory}
           deleteTask={deleteTask}
+          categories={categories}
+          setCategories={setCategories}
         />
       </div>
     </div>

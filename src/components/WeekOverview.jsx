@@ -1,6 +1,16 @@
-import determineColor from "../helperFunctions/determineColor";
-
-export default function WeekOverview({ weekDays, list, completed }) {
+export default function WeekOverview({
+  weekDays,
+  list,
+  completed,
+  categories,
+}) {
+  function setColorDropplet(task, categories) {
+    for (const el of categories) {
+      if (task[1] === el.name) {
+        return `bg-[${el.color}]`;
+      }
+    }
+  }
   return (
     <div className="flex justify-center gap-[7%] pt-4">
       {weekDays.map((day) => {
@@ -20,8 +30,9 @@ export default function WeekOverview({ weekDays, list, completed }) {
                   {matchingTasks.map((task) => (
                     <div
                       key={task[0]}
-                      className={`flex text-center items-center justify-center border ${determineColor(
-                        task[1]
+                      className={`flex text-center items-center justify-center border ${setColorDropplet(
+                        task,
+                        categories
                       )} py-2 rounded-xl mb-1 text-transparent hover:text-black`}
                     >
                       {completed

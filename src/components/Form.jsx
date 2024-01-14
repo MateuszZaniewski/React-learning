@@ -50,12 +50,13 @@ export default function Form(props) {
             onChange={handleCategoryChange}
             className="indent-1"
           >
-            <option value="home">Home</option>
-            <option value="work">Work</option>
-            <option value="personal">Personal</option>
-            <option value="finance">Finance</option>
-            <option value="health">Health</option>
-            <option value="shopping">Shopping</option>
+            {props.categories.map((opt) => {
+              return (
+                <option key={opt.name} value={opt.name}>
+                  {opt.name}
+                </option>
+              );
+            })}
           </select>
         </div>
         <div>

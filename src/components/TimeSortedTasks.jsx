@@ -12,6 +12,8 @@ export default function TimeSortedTasks({
   completeTask,
   unCompleteItem,
   deleteTask,
+  categories,
+  setCategories,
 }) {
   // Works, returns today tasks
   const todaysTasks = () => {
@@ -55,6 +57,8 @@ export default function TimeSortedTasks({
             unCompleteItem={unCompleteItem}
             showDate={false}
             deleteTask={deleteTask}
+            categories={categories}
+            setCategories={setCategories}
           />
         </div>
         <div className={todaysTasks().length < 1 ? "block" : "hidden"}>
@@ -71,6 +75,8 @@ export default function TimeSortedTasks({
             unCompleteItem={unCompleteItem}
             showDate={false}
             deleteTask={deleteTask}
+            categories={categories}
+            setCategories={setCategories}
           />
         </div>
         <div className={tomorowTasks().length < 1 ? "block" : "hidden"}>
@@ -87,6 +93,8 @@ export default function TimeSortedTasks({
             unCompleteItem={unCompleteItem}
             showDate={false}
             deleteTask={deleteTask}
+            categories={categories}
+            setCategories={setCategories}
           />
         </div>
         <div className={thisWeekTasks().length < 1 ? "block" : "hidden"}>
@@ -103,6 +111,8 @@ export default function TimeSortedTasks({
             unCompleteItem={unCompleteItem}
             showDate={false}
             deleteTask={deleteTask}
+            categories={categories}
+            setCategories={setCategories}
           />
         </div>
         <div className={thisMonthTasks().length < 1 ? "block" : "hidden"}>
