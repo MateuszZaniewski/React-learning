@@ -61,7 +61,11 @@ export default function Categories({
         })}
       </div>
       <div className={`${showModal ? "hidden" : "block"}`}>
-        <CategoryForm onSubmit={getData} />
+        <CategoryForm
+          onSubmit={getData}
+          setShowModal={setShowModal}
+          showModal={showModal}
+        />
       </div>
       <AddCategory
         showModal={showModal}
