@@ -134,7 +134,7 @@ export default function ToDoContainer() {
           />
         </div>
       </div>
-      <div className="lg:hidden bg-gray-100 w-[90%] mx-auto rounded-lg h-[90vmax] max-w-[500px]">
+      <div className="lg:hidden bg-gray-100 w-[90%] mx-auto rounded-lg lg:h-[90vmax] max-w-[500px]">
         <Form onSubmit={getData} categories={categories} />
         <div className="flex justify-center items-center flex-wrap gap-2 py-4">
           <span className="text-xs">Options: </span>
@@ -166,7 +166,13 @@ export default function ToDoContainer() {
           setCategories={setCategories}
         />
 
-        <div className={list.length < 1 ? "hidden" : "block"}>
+        <div
+          className={
+            list.length < 1
+              ? "hidden"
+              : "block max-h-[50vmax] h-[100vh] md:max-h-[55vmax] lg:max-h-[60vmax] overflow-clip"
+          }
+        >
           <ul className="lg:pb-4 flex justify-start lg:justify-center max-h-[60vmax] overflow-y-auto">
             <Task
               list={list}
