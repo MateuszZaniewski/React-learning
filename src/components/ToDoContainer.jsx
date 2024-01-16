@@ -28,7 +28,6 @@ export default function ToDoContainer() {
   ]);
 
   const getData = (data) => {
-    console.log(data);
     setList([...list, data]);
   };
 
@@ -41,7 +40,6 @@ export default function ToDoContainer() {
   };
 
   const getButtonData = (data) => {
-    console.log("Active category", data);
     setSelectedCategory(data);
   };
 

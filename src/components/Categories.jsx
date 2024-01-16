@@ -11,7 +11,6 @@ export default function Categories({
   setCategories,
 }) {
   const [showModal, setShowModal] = useState(true);
-  console.log(categories);
   const handleButton = (e) => {
     onButton(e.target.textContent);
   };
@@ -40,13 +39,13 @@ export default function Categories({
     setCategories(updatedCategories);
   }, [list]);
 
-  console.log(categories);
-
   return (
     <div
-      className={`lg:pt-2 flex lg:items-stretch items-center justify-start overflow-auto lg:max-w-sm md:max-w-lg lg:gap-2 w-[90%] mx-auto no-scrollbar lg:flex-col lg:w-full`}
+      className={`flex items-center justify-start overflow-auto  w-[90%] mx-auto no-scrollbar lg:flex-col lg:w-full lg:items-stretch lg:max-w-sm md:max-w-lg lg:gap-2 lg:pt-2`}
     >
-      <div className={`${showModal ? "block" : "hidden"}`}>
+      <div
+        className={`${showModal ? "flex" : "hidden"} lg:flex-col pr-4 lg:pr-0`}
+      >
         {categories.map((categ) => {
           return (
             <Button

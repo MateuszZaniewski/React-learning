@@ -11,7 +11,6 @@ export default function CalendarView({ list, completed, categories }) {
   const [numberOfDays, setNumberOfDays] = useState(-2);
 
   useEffect(() => {
-    console.log("Days loaded successfully");
     const days = thisWeekDays(numberOfDays);
     const startDay = days[0].toLocaleDateString("en-US", {
       day: "numeric",

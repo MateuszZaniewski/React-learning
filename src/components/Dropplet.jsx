@@ -1,5 +1,4 @@
 export default function Dropplet({ category, categories }) {
-  console.log(category);
   return (
     <div>
       {categories.map((el) => {

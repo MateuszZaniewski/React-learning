@@ -3,12 +3,10 @@ export default function AddCategory({ showModal, setShowModal }) {
   return (
     <div
       onClick={() => setShowModal(!showModal)}
-      className="flex py-2 gap-2 justify-center"
+      className="flex py-2 gap-2 justify-center items-center"
     >
       <img src={plus} className={`h-6 w-6 ${showModal ? "block" : "hidden"}`} />
-      <button className={`${showModal ? "block" : "hidden"}`}>
-        Add new category
-      </button>
+      <button className={`${showModal ? "block" : "hidden"}`}>Add</button>
     </div>
   );
 }

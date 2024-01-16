@@ -17,7 +17,6 @@ export default function Form(props) {
   };
 
   const handleCategoryChange = (e) => {
-    console.log(e.target.value);
     setCategory(e.target.value);
   };
 

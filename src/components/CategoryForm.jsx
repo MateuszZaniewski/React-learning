@@ -38,7 +38,6 @@ export default function CategoryForm({ onSubmit, showModal, setShowModal }) {
 
   const handleNameChange = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     setName(e.target.value);
   };
   return (
