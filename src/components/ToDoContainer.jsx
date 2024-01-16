@@ -167,7 +167,7 @@ export default function ToDoContainer() {
         />
 
         <div className={list.length < 1 ? "hidden" : "block"}>
-          <ul className="lg:pb-4 flex justify-start lg:justify-center">
+          <ul className="lg:pb-4 flex justify-start lg:justify-center max-h-[60vmax] overflow-y-auto">
             <Task
               list={list}
               completed={completed}

@@ -38,7 +38,7 @@ export default function TodayView({
         <div className={list.length < 1 ? "block" : "hidden"}>
           <NoTasksInfo day={"today"} />
         </div>
-        <div className={list.length > 0 ? "block" : "hidden"}>
+        <div className={`${list.length > 0 ? "block" : "hidden"}`}>
           <Task
             list={todaysTasks()}
             completed={completed}
