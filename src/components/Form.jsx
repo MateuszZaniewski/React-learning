@@ -6,7 +6,7 @@ export default function Form(props) {
   const [category, setCategory] = useState("home");
   const [startDate, setStartDate] = useState(new Date());
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     props.onSubmit([item, category, startDate]);
     setItem("");

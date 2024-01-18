@@ -61,17 +61,16 @@ export default function StickyWallView({ notes, setNotes }) {
           noteCreation ? "flex" : "hidden"
         }`}
       ></div>
+      <div className={noteCreation ? "block" : "hidden"}>
+        <NoteForm
+          addNote={addNote}
+          onSubmit={getData}
+          setNoteCreation={setNoteCreation}
+          noteCreation={noteCreation}
+          notes={notes}
+        />
+      </div>
       <div className="flex flex-col justify-start overflow-y-auto max-h-[75vmin]">
-        <div className={noteCreation ? "block" : "hidden"}>
-          <NoteForm
-            addNote={addNote}
-            onSubmit={getData}
-            setNoteCreation={setNoteCreation}
-            noteCreation={noteCreation}
-            notes={notes}
-          />
-        </div>
-
         <ul className="py-4 flex flex-col gap-4">
           {notes.map((item, index) => {
             return (
